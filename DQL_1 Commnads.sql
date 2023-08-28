@@ -132,6 +132,12 @@ SELECT * FROM dev_schema.employee WHERE last_name ILIKE 'k%';
 -- IN operator
 SELECT * FROM dev_schema.employee WHERE employee_id IN ('TechM11', 'TechM13', 'TechM16');
 
+-- NOT IN operator
+SELECT * FROM dev_schema.employee WHERE employee_id NOT IN ('TechM11', 'TechM13', 'TechM16');
+
+-- BETWEEN operator
+SELECT first_name, last_name FROM dev_schema.employee WHERE salary BETWEEN 200000 AND 300000;
+
 
 
 
