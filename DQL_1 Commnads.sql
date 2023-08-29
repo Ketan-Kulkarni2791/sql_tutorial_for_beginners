@@ -138,6 +138,28 @@ SELECT * FROM dev_schema.employee WHERE employee_id NOT IN ('TechM11', 'TechM13'
 -- BETWEEN operator
 SELECT first_name, last_name FROM dev_schema.employee WHERE salary BETWEEN 200000 AND 300000;
 
+-- BETWEEN operator with text
+SELECT * FROM dev_schema.employee WHERE first_name BETWEEN 'I' AND 'P';
+
+-- IS NULL operator
+SELECT first_name, last_name FROM dev_schema.employee WHERE last_name IS NULL;
+SELECT first_name, last_name FROM dev_schema.employee WHERE last_name IS NOT NULL;
+
+-- Addition operator
+SELECT first_name, last_name, salary, salary+10000 as appraised_salary FROM dev_schema.employee;
+
+-- Subtraction operator
+SELECT first_name, last_name, salary, salary-10000 as depraised_salary FROM dev_schema.employee;
+
+-- Multiplication operator
+SELECT first_name, last_name, salary, salary*2 as appraised_salary FROM dev_schema.employee;
+
+-- Division operator
+SELECT first_name, last_name, salary, salary/2 as appraised_salary FROM dev_schema.employee;
+
+
+
+
 
 
 
