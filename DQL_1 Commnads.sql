@@ -157,6 +157,16 @@ SELECT first_name, last_name, salary, salary*2 as appraised_salary FROM dev_sche
 -- Division operator
 SELECT first_name, last_name, salary, salary/2 as appraised_salary FROM dev_schema.employee;
 
+-- DISTINCT Clause
+SELECT  DISTINCT salary FROM dev_schema.employee;
+
+SELECT  DISTINCT first_name, salary FROM dev_schema.employee;
+
+-- ORDER BY clause
+SELECT * FROM dev_schema.employee ORDER BY salary DESC;
+
+SELECT * FROM dev_schema.employee ORDER BY 3 DESC;
+
 
 
 
