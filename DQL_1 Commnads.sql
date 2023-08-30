@@ -233,6 +233,20 @@ ON emp.fk_job_id = job.job_id
 INNER JOIN dev_schema.department as dept
 ON emp.fk_department_id = dept.department_id;
 
+-- Fetch employees and their job titles where department is IT Developement
+SELECT 
+emp.first_name, emp.last_name,
+job.job_title, dept.department_name
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.job as job
+ON emp.fk_job_id = job.job_id
+INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept.department_id
+WHERE dept.department_name = 'IT Developent';
+
+
+
+
 
 
 
