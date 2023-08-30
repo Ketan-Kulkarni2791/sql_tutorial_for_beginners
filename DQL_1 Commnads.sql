@@ -167,6 +167,31 @@ SELECT * FROM dev_schema.employee ORDER BY salary DESC;
 
 SELECT * FROM dev_schema.employee ORDER BY 3 DESC;
 
+-- LIMIT with OFFSET
+SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 50;
+
+SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 5 OFFSET 4;
+
+-- CASE statement
+SELECT *, 
+CASE
+	WHEN salary < 30000 THEN 'Works as fresher'
+	WHEN salary > 30000 AND salary < 200000 THEN 'Works as Junior Engineer'
+	WHEN salary = 200000 THEN 'Works as Senior Engineer'
+	ELSE 'Works as managers'
+END AS EmployeeStatus
+FROM dev_schema.employee;
+
+-- CASE expression
+SELECT first_name, last_name, 
+CASE salary
+	WHEN 30000 THEN 'Works as fresher'
+	WHEN 180000 THEN 'Works as Junior Engineer'
+	WHEN 200000 THEN 'Works as Senior Engineer'
+	ELSE 'Works as managers'
+END AS EmployeeStatus
+FROM dev_schema.employee;
+
 
 
 
