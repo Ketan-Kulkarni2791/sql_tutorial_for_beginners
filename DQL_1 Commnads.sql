@@ -192,6 +192,48 @@ CASE salary
 END AS EmployeeStatus
 FROM dev_schema.employee;
 
+----------------------------------- INNER JOIN -----------------------------------
+SELECT * FROM dev_schema.employee;
+SELECT * FROM dev_schema.department;
+SELECT * FROM dev_schema.job;
+
+-- Fetch all the employee's first name, last name and their respective department names.
+SELECT 
+dev_schema.employee.first_name, dev_schema.employee.last_name,
+dev_schema.department.department_name
+FROM 
+dev_schema.employee INNER JOIN dev_schema.department
+ON 
+dev_schema.employee.fk_department_id = dev_schema.department.department_id;
+
+
+SELECT 
+emp.first_name, emp.last_name,
+dept.department_name
+FROM 
+dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON 
+emp.fk_department_id = dept.department_id;
+
+-- Fetch employee names, salary and job title.
+SELECT 
+emp.first_name, emp.last_name, emp.salary,
+job.job_title
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.job as job
+ON emp.fk_job_id = job.job_id;
+
+-- Fetch employee names with their job title and department.
+SELECT 
+emp.first_name, emp.last_name,
+job.job_title, dept.department_name
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.job as job
+ON emp.fk_job_id = job.job_id
+INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept.department_id;
+
+
 
 
 
