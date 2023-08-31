@@ -142,16 +142,18 @@ SELECT * FROM dev_schema.employee WHERE salary::text LIKE '_8%0';
 SELECT * FROM dev_schema.employee WHERE last_name ILIKE 'k%';
 
 -- IN operator
-SELECT * FROM dev_schema.employee WHERE employee_id IN ('TechM11', 'TechM13', 'TechM16');
+SELECT * FROM dev_schema.employee WHERE employee_id IN ('TechM35', 'TechM36', 'TechM37');
+SELECT * FROM dev_schema.employee WHERE first_name IN ('Rachit', 'Ketan', 'Manoj', 'Shubham');
+SELECT first_name, salary, fk_job_id FROM dev_schema.employee WHERE fk_job_id IN (1, 2, 3);
 
 -- NOT IN operator
-SELECT * FROM dev_schema.employee WHERE employee_id NOT IN ('TechM11', 'TechM13', 'TechM16');
+SELECT * FROM dev_schema.employee WHERE employee_id NOT IN ('TechM35', 'TechM36', 'TechM37');
 
 -- BETWEEN operator
-SELECT first_name, last_name FROM dev_schema.employee WHERE salary BETWEEN 200000 AND 300000;
+SELECT first_name, last_name, salary FROM dev_schema.employee WHERE salary BETWEEN 200000 AND 300000;
 
 -- BETWEEN operator with text
-SELECT * FROM dev_schema.employee WHERE first_name BETWEEN 'I' AND 'P';
+SELECT * FROM dev_schema.employee WHERE first_name BETWEEN 'I' AND 'Q';
 
 -- IS NULL operator
 SELECT first_name, last_name FROM dev_schema.employee WHERE last_name IS NULL;
@@ -167,22 +169,22 @@ SELECT first_name, last_name, salary, salary-10000 as depraised_salary FROM dev_
 SELECT first_name, last_name, salary, salary*2 as appraised_salary FROM dev_schema.employee;
 
 -- Division operator
-SELECT first_name, last_name, salary, salary/2 as appraised_salary FROM dev_schema.employee;
+SELECT first_name, last_name, salary, salary/2 as depraised_salary FROM dev_schema.employee;
 
 -- DISTINCT Clause
-SELECT  DISTINCT salary FROM dev_schema.employee;
+SELECT DISTINCT salary FROM dev_schema.employee;
 
 SELECT  DISTINCT first_name, salary FROM dev_schema.employee;
 
 -- ORDER BY clause
 SELECT * FROM dev_schema.employee ORDER BY salary DESC;
 
-SELECT * FROM dev_schema.employee ORDER BY 3 DESC;
+SELECT * FROM dev_schema.employee ORDER BY 4 DESC;
 
 -- LIMIT with OFFSET
-SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 50;
+SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 5;
 
-SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 5 OFFSET 4;
+SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 4 OFFSET 4;
 
 -- CASE statement
 SELECT *, 
