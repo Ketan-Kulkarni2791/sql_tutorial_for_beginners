@@ -302,6 +302,28 @@ dev_schema.employee as emp INNER JOIN dev_schema.department as dept
 ON emp.fk_department_id = dept.department_id 
 GROUP BY dept.department_name HAVING COUNT(employee_id) > 2 ORDER BY Total_Salary DESC;
 
+-------------------------------------- Count() --------------------------------------
+SELECT COUNT(*) FROM dev_schema.employee;
+
+SELECT COUNT(employee_id) FROM dev_schema.employee;
+
+-------------------------------------- Sum() --------------------------------------
+SELECT SUM(salary) FROM dev_schema.employee;
+
+SELECT SUM(salary) FROM dev_schema.employee WHERE salary < 300000;
+
+-------------------------------------- MIN/MAX() --------------------------------------
+SELECT MIN(salary) as min_salary, MAX(salary) as max_salary FROM dev_schema.employee;
+
+SELECT MAX(employee_id) FROM dev_schema.employee;
+
+
+
+
+
+
+
+
 
 
 
