@@ -76,7 +76,19 @@ INSERT INTO dev_schema.employee (first_name, last_name, salary, fk_job_id, fk_de
 ('Indu', 'Singh', 30000, 2, 100),
 ('Manoj', 'Gadkar', 25000, 3, 101),
 ('Shubham', 'Giradkar', 180000, 5, 104),
-('Pooja', 'Shrivastava', 30000, 7, 104);
+('Pooja', 'Shrivastava', 30000, 7, 104),
+('Chandler', 'Bing', 280000, 1, 100),
+('Phebe', 'Buffey', 250000, 1, 100),
+('Rachel', 'Green', 150000, 4, 102),
+('Monica', 'Geller', 30000, 7, 104),
+('Ross', 'Geller', 40000, 6, 104),
+('Michael', 'Scott', 30000, 2, 100),
+('Joey', 'Tribianni', 15000, 3, 101),
+('Regina', 'Phalangi', 150000, 5, 104),
+('Dwight', 'Schrute', 30000, 7, 104);
+
+-- TRUNCATE dev_schema.employee;
+
 
 
 SELECT department_id, department_name FROM dev_schema.department;
@@ -243,6 +255,37 @@ ON emp.fk_job_id = job.job_id
 INNER JOIN dev_schema.department as dept
 ON emp.fk_department_id = dept.department_id
 WHERE dept.department_name = 'IT Developent';
+
+------------------------------------ GROUP BY ------------------------------------
+
+SELECT * FROM dev_schema.employee;
+
+-- Fetch total salary distribution for each department
+SELECT 
+dept.department_name, SUM(emp.salary) as total_salary
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept.department_id 
+GROUP BY dept.department_name ORDER BY total_salary DESC;
+
+-- Fetch total number of employees and total amount of salary for each department.
+SELECT
+dept.department_name, COUNT(employee_id) as Total_Employees, SUM(emp.salary) as Total_Salary
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept.department_id 
+GROUP BY dept.department_name ORDER BY Total_Salary DESC;
+
+-- Fetch average salary for each job title.
+SELECT
+job.job_title, AVG(emp.salary) as avg_salary
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.job as job
+ON emp.fk_job_id = job.job_id 
+GROUP BY job.job_title ORDER BY avg_salary DESC;
+
+
+
 
 
 
