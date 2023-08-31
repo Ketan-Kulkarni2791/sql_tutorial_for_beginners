@@ -284,10 +284,23 @@ dev_schema.employee as emp INNER JOIN dev_schema.job as job
 ON emp.fk_job_id = job.job_id 
 GROUP BY job.job_title ORDER BY avg_salary DESC;
 
+------------------------------------ GROUP BY With HAVING clause ------------------------------------
 
+-- Fetch departments with total salaries greater than 1.5 lacs.
+SELECT 
+dept.department_name, SUM(emp.salary) as total_salary
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept.department_id 
+GROUP BY dept.department_name HAVING SUM(emp.salary) >= 150000 ORDER BY total_salary DESC;
 
-
-
+-- Fetch total number of employees and total amount of salary for each department ahving no of employees greater than 2.
+SELECT
+dept.department_name, COUNT(employee_id) as Total_Employees, SUM(emp.salary) as Total_Salary
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept.department_id 
+GROUP BY dept.department_name HAVING COUNT(employee_id) > 2 ORDER BY Total_Salary DESC;
 
 
 
