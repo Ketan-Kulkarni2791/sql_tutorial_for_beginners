@@ -174,7 +174,7 @@ SELECT first_name, last_name, salary, salary/2 as depraised_salary FROM dev_sche
 -- DISTINCT Clause
 SELECT DISTINCT salary FROM dev_schema.employee;
 
-SELECT  DISTINCT first_name, salary FROM dev_schema.employee;
+SELECT DISTINCT first_name, salary FROM dev_schema.employee;
 
 -- ORDER BY clause
 SELECT * FROM dev_schema.employee ORDER BY salary DESC;
@@ -320,6 +320,12 @@ SELECT MIN(salary) as min_salary, MAX(salary) as max_salary FROM dev_schema.empl
 SELECT MAX(employee_id) FROM dev_schema.employee;
 
 
+-------------------------------------- Order of Execution --------------------------------------
+SELECT first_name FROM dev_schema.employee ORDER BY salary;
+
+SELECT DISTINCT first_name FROM dev_schema.employee ORDER BY salary;
+
+SELECT DISTINCT salary FROM dev_schema.employee ORDER BY salary;
 
 
 
