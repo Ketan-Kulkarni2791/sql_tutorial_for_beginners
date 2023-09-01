@@ -327,6 +327,21 @@ SELECT DISTINCT first_name FROM dev_schema.employee ORDER BY salary;
 
 SELECT DISTINCT salary FROM dev_schema.employee ORDER BY salary;
 
+-------------------------------------- Subquery --------------------------------------
+SELECT AVG(salary) as avg_salary FROM dev_schema.employee;
+
+SELECT * FROM dev_schema.employee WHERE salary > 116666.666666666667;
+
+SELECT * FROM dev_schema.employee WHERE salary > (SELECT AVG(salary) as avg_salary FROM dev_schema.employee);
+
+-- Fetch the employees with the highest salary for each department
+SELECT emp.employee_id, emp.first_name, emp.last_name, emp.salary, dept.department_name
+FROM dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept. department_id
+WHERE (dept.department_name, emp.salary) IN (SELECT dept.department_name, MAX(emp.salary) FROM 
+											 dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+											ON emp.fk_department_id = dept.department_id GROUP BY dept.department_name);
+
 
 
 
