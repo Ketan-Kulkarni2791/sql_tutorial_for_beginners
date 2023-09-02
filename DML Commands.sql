@@ -11,20 +11,25 @@ INSERT INTO test_schema.testing_1 VALUES
 SELECT first_name as fname, last_name as lname FROM test_schema.testing_1 ORDER BY age DESC;
 
 INSERT INTO test_schema.testing_1 VALUES
-(6, 'Hritik', 'Roshan', 'M', -10, '09-03-2013', 98.15, 'true');
+(6, '12345', 'Roshan', 'M', 40, '09-03-2013', 98.15, 'true');
+
+INSERT INTO test_schema.testing_1 VALUES (first_name, last_name, )
+('Rahul', 'Gupta', 'M', 31, '31-05-1991', 98.15, 'false');
 
 INSERT INTO test_schema.testing_1 VALUES
 (6, 'Hritik', 'Roshan', 'M', 10, '09-03-2013', 98.15, false);
 
 -- ######################### UPDATE #########################
 
-SELECT * FROM test_schema.testing_1 ORDER BY t_id;
+SELECT * FROM test_schema.testing_1 ORDER BY dob DESC;
+
+UPDATE test_schema.testing_1 SET first_name = 'Hritik' WHERE t_id = 6;
 
 UPDATE test_schema.testing_1 SET last_name = 'Tripathi' WHERE t_id = 10;
 
 -- ######################### DELETE #########################
 
-DELETE FROM test_schema.testing_1 WHERE age>10;
+DELETE FROM test_schema.testing_1 WHERE age>36;
 DELETE FROM test_schema.testing_1;
 
 
