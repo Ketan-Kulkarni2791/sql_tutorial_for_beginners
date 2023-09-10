@@ -189,13 +189,13 @@ SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 4 OFFSET 4;
 -- CASE statement
 
 -- Based on salary, fetch the employee data and add a new column EmployeeStatus based on salary
-SELECT employee_id, first_name, last_name,
+SELECT employee_id, first_name, last_name, 
 CASE
 	WHEN salary <= 30000 THEN 'Works as fresher'
 	WHEN salary > 30000 AND salary <= 200000 THEN 'Works as Junior Engineer'
 	WHEN salary > 200000 AND salary < 300000 THEN 'Works as Senior Engineer'
 	ELSE 'Works as managers'
-END AS EmployeeStatus
+END AS EmployeeStatus 
 FROM dev_schema.employee;
 
 -- CASE expression
