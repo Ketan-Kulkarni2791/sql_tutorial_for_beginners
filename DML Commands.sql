@@ -34,6 +34,29 @@ DELETE FROM test_schema.testing_1;
 
 
 
+-- ######################### Identity Column #########################
+
+CREATE TABLE test_schema.identity_test_column
+(
+	i_id SERIAL primary key,
+	name varchar(100) NOT NULL
+);
+
+SELECT * FROM test_schema.identity_test_column;
+
+INSERT INTO test_schema.identity_test_column VALUES (1, 'testing 1');
+
+UPDATE test_schema.identity_test_column SET i_id = 5 WHERE name = 'testing 1';
+UPDATE test_schema.identity_test_column SET i_id = 51 WHERE name = 'testing 2';
+
+DELETE FROM test_schema.identity_test_column WHERE i_id = 3;
+
+
+INSERT INTO test_schema.identity_test_column (name) VALUES ('testing 7');
+
+
+
+
 
 
 

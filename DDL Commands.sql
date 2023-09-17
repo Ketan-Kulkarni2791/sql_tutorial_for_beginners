@@ -24,8 +24,7 @@ CREATE TABLE test_schema.testing_1
 	dob date,
 	grade float,
 	is_active boolean,
-	CONSTRAINT ch_student_age CHECK(age>0),
-	-- CONSTRAINT ch_gender CHECK(GENDER IN ('M', 'F', 'Male', 'Female'))
+	CONSTRAINT ch_student_age CHECK(age>0)
 );
 
 -- ######################### Identity Column #########################
