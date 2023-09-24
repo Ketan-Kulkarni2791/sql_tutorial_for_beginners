@@ -19,6 +19,10 @@ INSERT INTO test_schema.testing_1 VALUES (first_name, last_name, )
 INSERT INTO test_schema.testing_1 VALUES
 (6, 'Hritik', 'Roshan', 'M', 10, '09-03-2013', 98.15, false);
 
+SELECT first_name, age FROM test_schema.testing_1;
+
+SELECT * FROM test_schema.testing_1 WHERE first_name IN ('Rachit', 'Katrina');
+
 -- ######################### UPDATE #########################
 
 SELECT * FROM test_schema.testing_1 ORDER BY dob DESC;
@@ -53,6 +57,24 @@ DELETE FROM test_schema.identity_test_column WHERE i_id = 3;
 
 
 INSERT INTO test_schema.identity_test_column (name) VALUES ('testing 7');
+
+
+-- ######################### Identity Column With SEQUENCE #########################
+
+CREATE TABLE test_schema.seq_table
+(
+	seq_id INT primary key,
+	name varchar(100) NOT NULL
+);
+
+CREATE SEQUENCE auto_seq_id
+start 100
+increment 1
+NO MAXVALUE;
+
+SELECT * FROM test_schema.seq_table;
+
+INSERT INTO test_schema.seq_table(seq_id, name) VALUES (nextval('auto_seq_id'), 'testing 2');
 
 
 
