@@ -31,3 +31,23 @@ WITH cte_salary_status AS
 											 dev_schema.employee as emp INNER JOIN dev_schema.department as dept
 											ON emp.fk_department_id = dept.department_id GROUP BY dept.department_name)
 )
+
+
+-------------------------------------- Left Outer Join --------------------------------------
+
+SELECT *
+FROM dev_schema.department as dept LEFT OUTER JOIN dev_schema.employee as emp  
+ON emp.fk_department_id = dept.department_id;
+
+-------------------------------------- Right Outer Join --------------------------------------
+
+SELECT *
+FROM dev_schema.employee as emp RIGHT OUTER JOIN dev_schema.department as dept  
+ON emp.fk_department_id = dept.department_id;
+
+-------------------------------------- Full Outer Join --------------------------------------
+
+SELECT *
+FROM dev_schema.employee as emp Full OUTER JOIN dev_schema.department as dept  
+ON emp.fk_department_id = dept.department_id;
+

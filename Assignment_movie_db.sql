@@ -1,4 +1,4 @@
--- You have to create a schema first. Since we don't our tables to be created in default 'public' schema
+-- You have to create a schema first. Since we don't want our tables to be created in default 'public' schema
 CREATE SCHEMA dev_schema;
 
 CREATE TABLE dev_schema.movie

@@ -213,6 +213,12 @@ SELECT * FROM dev_schema.employee;
 SELECT * FROM dev_schema.department;
 SELECT * FROM dev_schema.job;
 
+SELECT *
+FROM 
+dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON 
+emp.fk_department_id = dept.department_id;
+
 -- Fetch all the employee's first name, last name and their respective department names.
 
 SELECT 
