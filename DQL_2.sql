@@ -51,3 +51,23 @@ SELECT *
 FROM dev_schema.employee as emp Full OUTER JOIN dev_schema.department as dept  
 ON emp.fk_department_id = dept.department_id;
 
+-------------------------------------- Cross Join --------------------------------------
+
+
+SELECT * FROM dev_schema.employee;
+
+SELECT *
+FROM dev_schema.employee CROSS JOIN dev_schema.department;
+
+SELECT *
+FROM dev_schema.employee as emp CROSS JOIN dev_schema.department as dept
+WHERE dept.department_name IN ('IT Development', 'HR', 'Cloud');
+
+-------------------------------------- Self Join --------------------------------------
+
+-- TBD
+
+
+
+
+
