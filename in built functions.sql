@@ -30,4 +30,16 @@ SELECT CHARACTER_LENGTH('hjdghdsjhgjahsd kgkkgk yfhdj');	-- o/p : 28
 
 SELECT last_name, CHAR_LENGTH(last_name) as length_of_last_names FROM dev_schema.employee;
 
+-------------------------------------- SUBSTRING() --------------------------------------
+
+SELECT last_name, SUBSTRING( first_name, 1, 1 ) AS initial FROM dev_schema.employee ORDER BY last_name;
+
+-------------------------------------- COALESCE() --------------------------------------
+
+SELECT * FROM dev_schema.job;
+INSERT INTO dev_schema.job (job_title, min_salary, max_salary) VALUES ('Cleaner', 5000, NULL);
+
+SELECT job_title, (max_salary-min_salary/2) as avg_salary FROM dev_schema.job;
+SELECT job_title, (COALESCE(max_salary, 0)-min_salary/2) as avg_salary FROM dev_schema.job;
+
 
