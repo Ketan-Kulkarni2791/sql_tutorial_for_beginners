@@ -42,4 +42,21 @@ INSERT INTO dev_schema.job (job_title, min_salary, max_salary) VALUES ('Cleaner'
 SELECT job_title, (max_salary-min_salary/2) as avg_salary FROM dev_schema.job;
 SELECT job_title, (COALESCE(max_salary, 0)-min_salary/2) as avg_salary FROM dev_schema.job;
 
+-------------------------------------- CAST() --------------------------------------
+
+SELECT CAST('100' AS INTEGER);
+SELECT CAST('10C' AS INTEGER);
+SELECT CAST ('2020-01-01' AS DATE), CAST ('01-OCT-2020' AS DATE);
+SELECT CAST('true' AS BOOLEAN), CAST('false' as BOOLEAN), CAST('T' as BOOLEAN), CAST('F' as BOOLEAN);
+
+-------------------------------------- SUM() --------------------------------------
+
+SELECT SUM(salary) as total_salary FROM dev_schema.employee;
+
+-------------------------------------- COUNT() --------------------------------------
+
+SELECT COUNT(*) FROM dev_schema.employee;
+SELECT COUNT(DISTINCT fk_department_id) FROM dev_schema.employee; 
+
+
 
