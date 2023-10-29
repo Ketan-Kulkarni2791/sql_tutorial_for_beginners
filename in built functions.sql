@@ -58,5 +58,14 @@ SELECT SUM(salary) as total_salary FROM dev_schema.employee;
 SELECT COUNT(*) FROM dev_schema.employee;
 SELECT COUNT(DISTINCT fk_department_id) FROM dev_schema.employee; 
 
+-------------------------------------- EXTRACT() --------------------------------------
+
+SELECT * FROM dev_schema.employee;
+ALTER TABLE dev_schema.employee ADD COLUMN created_at DATE DEFAULT NOW();
+ALTER TABLE dev_schema.employee DROP COLUMN created_at;
+ALTER TABLE dev_schema.employee ADD COLUMN created_at TIMESTAMP DEFAULT NOW();
+ALTER TABLE dev_schema.employee ADD COLUMN updated_at TIMESTAMP DEFAULT NOW();
+
+
 
 
