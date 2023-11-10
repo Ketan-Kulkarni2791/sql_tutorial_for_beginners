@@ -298,6 +298,14 @@ dev_schema.employee as emp INNER JOIN dev_schema.department as dept
 ON emp.fk_department_id = dept.department_id 
 GROUP BY dept.department_name ORDER BY total_salary DESC;
 
+-- Fetch total salary distribution for each department along with the department id
+SELECT 
+dept.department_name, dept.department_id, SUM(emp.salary) as total_salary
+FROM
+dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+ON emp.fk_department_id = dept.department_id 
+GROUP BY dept.department_name, dept.department_id ORDER BY total_salary DESC;
+
 -- Fetch total number of employees and total amount of salary for each department.
 SELECT
 dept.department_name, COUNT(employee_id) as Total_Employees, SUM(emp.salary) as Total_Salary
