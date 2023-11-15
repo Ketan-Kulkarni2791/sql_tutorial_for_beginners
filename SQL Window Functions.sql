@@ -77,6 +77,20 @@ ON emp.fk_department_id = dept.department_id
 INNER JOIN dev_schema.job as job
 ON emp.fk_job_id = job.job_id;
 
+-- RANK()
+
+SELECT first_name, last_name, RANK() OVER () emp_rank FROM dev_schema.employee;
+SELECT first_name, last_name, RANK() OVER (ORDER BY first_name) emp_rank FROM dev_schema.employee;
+SELECT first_name, last_name, RANK() OVER (ORDER BY Salary DESC) emp_rank FROM dev_schema.employee;
+
+-- Assign the rank to each employee based on their joining date in ascending order
+
+SELECT employee_id, first_name, last_name, RANK() OVER (ORDER BY created_at ASC) FROM dev_schema.employee;
+
+-- Write a SQL query to find the oldest and the newest employees of the organization
+
+
+
 
 
 
