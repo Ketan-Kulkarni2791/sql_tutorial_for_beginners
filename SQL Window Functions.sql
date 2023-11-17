@@ -89,6 +89,62 @@ SELECT employee_id, first_name, last_name, RANK() OVER (ORDER BY created_at ASC)
 
 -- Write a SQL query to find the oldest and the newest employees of the organization
 
+SELECT employee_id, first_name, last_name, RANK() OVER (ORDER BY created_at ASC) AS oldest_employees FROM dev_schema.employee LIMIT 1;
+
+SELECT employee_id, first_name, last_name, rank = RANK() OVER (ORDER BY created_at ASC) AS oldest_employees 
+FROM dev_schema.employee WHERE rank=1;
+
+SELECT employee_id, first_name, last_name FROM 
+(
+	SELECT employee_id, first_name, last_name,
+	RANK() OVER (ORDER BY created_at ASC) AS rk
+	FROM dev_schema.employee
+) AS subq
+WHERE rk = 1;
+
+SELECT employee_id, first_name, last_name FROM 
+(
+	SELECT employee_id, first_name, last_name,
+	RANK() OVER (ORDER BY created_at DESC) AS rk
+	FROM dev_schema.employee
+) AS subq
+WHERE rk = 1;
+
+-- Write a SQL query to find the employees with the highest salary
+
+SELECT employee_id, first_name, last_name, salary FROM
+(
+	SELECT employee_id, first_name, last_name, salary,
+	RANK() OVER (ORDER BY salary DESC) AS rk
+	FROM dev_schema.employee
+) AS subq
+WHERE rk = 1;
+
+-- DENSE_RANK()
+
+-- Assign the rank to each employee based on their salary in descending order
+
+SELECT employee_id, first_name, last_name, salary,
+RANK() OVER (ORDER BY salary DESC) AS ranked,
+DENSE_RANK() OVER (ORDER BY salary DESC) dense_ranked
+FROM dev_schema.employee;
+
+-- Write a SQL query to find the employees with the second highest salary
+
+SELECT employee_id, first_name, last_name, salary FROM
+(
+	SELECT employee_id, first_name, last_name, salary,
+	DENSE_RANK() OVER (ORDER BY salary DESC) AS rk
+	FROM dev_schema.employee
+) AS subq
+WHERE rk = 2;
+
+-- ROW_NUMBER()
+
+SELECT *,
+ROW_NUMBER() OVER (ORDER BY salary)
+FROM dev_schema.employee;
+
 
 
 
