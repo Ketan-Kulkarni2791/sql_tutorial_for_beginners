@@ -120,6 +120,7 @@ SELECT employee_id, first_name, last_name, salary FROM
 ) AS subq
 WHERE rk = 1;
 
+
 -- DENSE_RANK()
 
 -- Assign the rank to each employee based on their salary in descending order
@@ -138,6 +139,18 @@ SELECT employee_id, first_name, last_name, salary FROM
 	FROM dev_schema.employee
 ) AS subq
 WHERE rk = 2;
+
+-- Fetch the top three highest paid employees in each department, together with their salary and department.
+
+WITH cte_ranking AS
+(
+	SELECT emp.employee_id, emp.first_name, emp.last_name, emp.salary, dept.department_name,
+	DENSE_RANK() OVER (PARTITION BY dept.department_name ORDER BY emp.salary DESC) AS rk
+	FROM dev_schema.employee as emp INNER JOIN dev_schema.department as dept
+	ON emp.fk_department_id = dept.department_id
+)
+SELECT * FROM cte_ranking WHERE rk <= 3;
+
 
 -- ROW_NUMBER()
 

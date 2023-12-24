@@ -382,6 +382,10 @@ WHERE (dept.department_name, emp.salary) IN (SELECT dept.department_name, MAX(em
 SELECT first_name, last_name, MAX(salary) as salary FROM dev_schema.employee
 WHERE salary < (SELECT MAX(salary) FROM dev_schema.employee) GROUP BY first_name, last_name ORDER BY salary DESC LIMIT 1;
 
+-- first_name	last_name	salary	salary_diff
+--	Ketan		Kulkarni	300000	0
+--	Rahul		Gupta		200000	100000
+
 
 
 

@@ -67,6 +67,36 @@ WHERE dept.department_name IN ('IT Development', 'HR', 'Cloud');
 
 -- TBD
 
+-------------------------------------- Two Column Join --------------------------------------
+
+CREATE SEQUENCE IF NOT EXISTS dev_schema.cust_acc_id_seq;
+SELECT setval('dev_schema.cust_acc_id_seq', 1000);
+CREATE TABLE IF NOT EXISTS dev_schema.customer_account
+(
+	customer_id text primary key DEFAULT 'CUST' || nextval('dev_schema.cust_acc_id_seq'),
+	customer_name VARCHAR(50) NOT NULL,
+	contact_firstname VARCHAR(100) NOT NULL,
+	contact_lastname VARCHAR(100) NOT NULL,
+	country VARCHAR(100)
+);
+
+SELECT * FROM dev_schema.customer_account;
+
+INSERT INTO dev_schema.customer_account (customer_name, contact_firstname, contact_lastname, country) VALUES
+('Principal Global Solutions', 'Indu', 'Singh', 'USA' ),
+('Agfa Healthcare', 'Bhanu Prasad', 'Kongala', 'Belgium' ),
+('General Electric', 'Shobha', 'Tripathy', 'UK' ),
+('Baker Hughes', 'Ketan', 'Kulkarni', 'USA' ),
+('Maharashtra State Government', 'Sarang', 'Newaskar', 'India' );
+
+-- Select the employees and their ids who are also customer first contact.
+
+SELECT e.employee_id, e.first_name, e.last_name, ca.customer_name
+FROM dev_schema.employee e INNER JOIN dev_schema.customer_account ca
+ON e.first_name = ca.contact_firstname
+AND e.last_name = ca.contact_lastname;
+
+
 
 
 
