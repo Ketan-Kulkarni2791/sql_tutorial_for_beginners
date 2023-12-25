@@ -1,0 +1,20 @@
+1. Fetch all the job titles those have maximum salary greater than 200000 and display the result as 'dream_job'.
+
+2. Select the job titles that contains the following words: Software, analyst.
+
+3. Display the min_salary and max_salary of the top 3 job titles.
+
+4. Arrange and display the job title and min salary in lower to higher order.
+
+5. Display the id of the departments that starts with the string 'IT'.
+
+6. Arrange all the departments name in 'a to z' alphabetical order.
+
+7. Display the first name, last name, job is and department id of the employee with the lowest salary.
+
+8. Display the first name, last name, salary and their department names using Case statement/expression.
+	100 IT Development
+	101 IT Infrastructure
+	102 Data Analytics
+	103 Finance
+	104 HR 
