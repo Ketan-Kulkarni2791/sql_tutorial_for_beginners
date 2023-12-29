@@ -18,3 +18,24 @@
 	102 Data Analytics
 	103 Finance
 	104 HR 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9. Display the job title and department name of the employee with the lowest salary.
+
+10. Display the employee first name and last name those have the job title of data analyst.
+
+11. Display the highest salary of the employee that belongs to HR department. 
+
+12. Display the employee first name, last name and job title that belongs to the department containing word 'IT'.
+
+13. Display the first name, last name, salary of the employees those have department 'IT Development' and job title 'data analyst'.
+
+14. Display the first name, last name, salary, job title and department names of the top 5 emplyees.
+
+15. Display the job titles and departments of those emplyees having the salary greater than 100000.
+
+16. Dispaly the employee names and departments of the employees having job titles - software developer, software tester and HR.
+
+17. Display the employee names, salary and departement names of the emplyees having salary within the range of 200000 and 50000.
+
