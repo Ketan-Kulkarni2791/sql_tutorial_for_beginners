@@ -39,3 +39,20 @@
 
 17. Display the employee names, salary and departement names of the emplyees having salary within the range of 200000 and 50000.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+18. Display the count of employees whose salary is greater than 100000 and less than 100000.
+
+19. Display the sum of all the salaries as 'mota_maal' greater than 1 lac.
+
+20. Display the total number of departments.
+
+21. Dispaly the department name and total salary of the department with the lowest total salary.
+
+22. Display the count of the employee belonging to 'IT Development' and 'HR' departement.
+
+23. Dispaly the employee names and departments of the employees and total salary (as per the job title) having job titles - software developer, software tester and HR.
+
+24. Display total number of employees and total amount of salary for each job title.
+
+25. Display bottom 3 job titles with total salaries.
