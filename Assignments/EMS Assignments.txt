@@ -56,3 +56,16 @@
 24. Display total number of employees and total amount of salary for each job title.
 
 25. Display bottom 3 job titles with total salaries.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+26. Display the total number of employees having the salary less than average salary.
+
+27. Display the job titles with more than average maximum salary.
+
+28. Display the avg employee count of all the departments.
+
+29. Display the department name and count of employees those are having more employee count than the avg employee count of all the departments.
+
+30. Diplay the employees and their salary where salary is greater than 1 lac and department name is 'IT Development', 'Data analyst', 'HR'. [Do not use join.]
+
