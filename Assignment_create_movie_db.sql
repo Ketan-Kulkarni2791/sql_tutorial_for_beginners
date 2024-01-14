@@ -26,20 +26,36 @@ CREATE TABLE IF NOT EXISTS dev_schema.movie_direction
 		
 );
 
-CREATE TABLE IF NOT EXISTS dev_schema.movie_Actor
+CREATE TABLE IF NOT EXISTS dev_schema.actor
 (             
-	actor_id SERIAL primary key,
+	actor_id INT PRIMARY KEY,
 	actor_fname varchar(50) NOT NULL,
 	actor_lname varchar(50),
 	actor_gender varchar(1) CHECK (ACTOR_GENDER IN ('M' , 'F'))		
 );
+-- create sequence
+CREATE SEQUENCE IF NOT EXISTS dev_schema.act_pk_auto_sequence
+start 100
+increment 1
+NO MAXVALUE
+CACHE 1
+OWNED BY dev_schema.actor.actor_id;
+-- use sequence for the target column
+ALTER TABLE dev_schema.actor ALTER COLUMN actor_id SET DEFAULT nextval('dev_schema.act_pk_auto_sequence');
 
+-- Create sequence for movie_cast table
+CREATE SEQUENCE IF NOT EXISTS dev_schema.movie_cast_pk_auto_seq;
+SELECT setval('dev_schema.movie_cast_pk_auto_seq', 100);
+-- Create movie_cast table
 CREATE TABLE IF NOT EXISTS dev_schema.movie_cast
 (
+	movie_cast_id text primary key DEFAULT 'MV_CAST_' || nextval('dev_schema.movie_cast_pk_auto_seq'),
 	fk_actor_id int,
 	fk_movie_id int,
 	role varchar(30) NOT NULL
 );
+
+ALTER TABLE dev_schema.movie_cast RENAME COLUMN fk_movie_id TO fk_mov_id; 
 
 CREATE TABLE IF NOT EXISTS dev_schema.reviewer
 (             

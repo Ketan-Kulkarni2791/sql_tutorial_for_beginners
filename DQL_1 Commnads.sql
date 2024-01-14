@@ -386,49 +386,7 @@ WHERE salary < (SELECT MAX(salary) FROM dev_schema.employee) GROUP BY first_name
 --	Ketan		Kulkarni	300000	0
 --	Rahul		Gupta		200000	100000
 
--- Select the employees and their salary where salary is greater than 1 lac and department name is 'IT Development', 'Data analyst', 'HR'
-SELECT first_name, last_name, salary FROM dev_schema.employee WHERE salary > 100000
-AND fk_department_id IN (
-	SELECT department_id FROM dev_schema.department WHERE department_name IN ('IT Developent', 'Data Analytics', 'HR')
-);
 
--- Select the employees and their salary and department name where salary is greater than 1 lac and department name is 'IT Development', 'Data analyst', 'HR'
-SELECT emp.employee_id, emp.first_name, emp.last_name, emp.salary, dept.department_name
-FROM dev_schema.employee as emp INNER JOIN dev_schema.department as dept
-ON emp.fk_department_id = dept.department_id
-WHERE emp.salary > 100000 AND dept.department_name IN ('IT Developent', 'Data Analytics', 'HR');
-
-SELECT
-  d.department_name,
-  COUNT(e.employee_id)
-FROM dev_schema.employee as e
-JOIN dev_schema.department as d
-ON e.fk_department_id = d.department_id
-GROUP BY d.department_name
-HAVING COUNT(e.employee_id) > (SELECT AVG(d.count)
-                      FROM (SELECT employee_id, COUNT(employee_id)
-                            FROM dev_schema.employee GROUP BY employee_id) AS d);
-
--- Display the avg employee count of all the departments
-SELECT AVG(e.count) FROM (SELECT dept.department_name, COUNT(emp.employee_id)
-FROM dev_schema.employee as emp INNER JOIN dev_schema.department as dept
-ON emp.fk_department_id = dept.department_id
-GROUP BY dept.department_name) AS e;
-
--- Display the department name and count of employees those are having more employee count than the avg employee count of all the departments  
-SELECT
-  d.department_name,
-  COUNT(e.employee_id)
-FROM dev_schema.employee as e
-JOIN dev_schema.department as d
-ON e.fk_department_id = d.department_id
-GROUP BY d.department_name
-HAVING COUNT(e.employee_id) > (
-	SELECT AVG(e.count) FROM (SELECT dept.department_name, COUNT(emp.employee_id)
-FROM dev_schema.employee as emp INNER JOIN dev_schema.department as dept
-ON emp.fk_department_id = dept.department_id
-GROUP BY dept.department_name) AS e);
-)
 
 
 

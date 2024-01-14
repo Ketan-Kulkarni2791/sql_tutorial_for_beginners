@@ -31,6 +31,8 @@ WITH cte_salary_status AS
 											 dev_schema.employee as emp INNER JOIN dev_schema.department as dept
 											ON emp.fk_department_id = dept.department_id GROUP BY dept.department_name)
 )
+SELECT employee_id, first_name, last_name, salary, department_name FROM cte_salary_status
+WHERE salary > (SELECT AVG(salary) FROM cte_salary_status);
 
 
 -------------------------------------- Left Outer Join --------------------------------------
