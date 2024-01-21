@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS dev_schema.movie
 	mov_rel_country varchar(50)		
 );
 
+-- DROP TABLE dev_schema.movie;
+
 CREATE TABLE IF NOT EXISTS dev_schema.director
 (             
 	dir_id SERIAL primary key,
@@ -19,12 +21,26 @@ CREATE TABLE IF NOT EXISTS dev_schema.director
 			
 );
 
+-- DROP TABLE dev_schema.director;
+
+-- Create sequence for movie_direction table
+CREATE SEQUENCE IF NOT EXISTS dev_schema.movie_direction_pk_auto_seq;
+SELECT setval('dev_schema.movie_direction_pk_auto_seq', 10);
 CREATE TABLE IF NOT EXISTS dev_schema.movie_direction
-(             
+(  
+		movie_direction_id text primary key DEFAULT 'MV_DIR_' || nextval('dev_schema.movie_direction_pk_auto_seq'),
 	    fk_dir_id int,
-		fk_mov_id int
+		fk_mov_id int,
+		CONSTRAINT fk_dir
+		 foreign key (fk_dir_id) 
+		 REFERENCES dev_schema.director(dir_id),
+		CONSTRAINT fk_movie
+		 foreign key (fk_mov_id) 
+		 REFERENCES dev_schema.movie(movie_id)
 		
 );
+
+-- DROP TABLE dev_schema.movie_direction;
 
 CREATE TABLE IF NOT EXISTS dev_schema.actor
 (             
@@ -33,6 +49,9 @@ CREATE TABLE IF NOT EXISTS dev_schema.actor
 	actor_lname varchar(50),
 	actor_gender varchar(1) CHECK (ACTOR_GENDER IN ('M' , 'F'))		
 );
+
+-- DROP TABLE dev_schema.actor;
+
 -- create sequence
 CREATE SEQUENCE IF NOT EXISTS dev_schema.act_pk_auto_sequence
 start 100
@@ -55,7 +74,33 @@ CREATE TABLE IF NOT EXISTS dev_schema.movie_cast
 	role varchar(30) NOT NULL
 );
 
-ALTER TABLE dev_schema.movie_cast RENAME COLUMN fk_movie_id TO fk_mov_id; 
+-- ALTER TABLE dev_schema.movie_cast RENAME COLUMN fk_movie_id TO fk_mov_id; 
+-- DROP TABLE dev_schema.genres;
+
+-- Create sequence for genre table
+CREATE SEQUENCE IF NOT EXISTS dev_schema.genre_pk_auto_seq;
+SELECT setval('dev_schema.genre_pk_auto_seq', 10);
+CREATE TABLE IF NOT EXISTS dev_schema.genre
+(             
+	gen_id text primary key DEFAULT 'GENRE_' || nextval('dev_schema.genre_pk_auto_seq'),
+	gen_title varchar(50) NOT NULL			
+);
+
+SELECT * FROM dev_schema.genre;
+-- DROP TABLE dev_schema.movie_genre;
+
+-- Create sequence for movie_genre table
+CREATE SEQUENCE IF NOT EXISTS dev_schema.mov_genre_pk_auto_seq;
+SELECT setval('dev_schema.mov_genre_pk_auto_seq', 100);
+CREATE TABLE IF NOT EXISTS dev_schema.movie_genre
+( 
+	mov_gen_id text primary key DEFAULT 'MOV_GENRE_' || nextval('dev_schema.mov_genre_pk_auto_seq'),
+	fk_gen_id text,	
+	fk_mov_id int
+);
+
+SELECT * FROM dev_schema.movie;
+SELECT * FROM dev_schema.movie_genre;
 
 CREATE TABLE IF NOT EXISTS dev_schema.reviewer
 (             
@@ -69,16 +114,4 @@ CREATE TABLE IF NOT EXISTS dev_schema.rating
     fk_rev_id int,
 	rev_stars int CHECK (rev_stars >=0 AND rev_stars <=5) NOT NULL,
     num_of_rev int CHECK(num_of_rev>0) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS dev_schema.genres
-(             
-	gen_id SERIAL primary key,
-	gen_title varchar(50) NOT NULL			
-);
-
-CREATE TABLE IF NOT EXISTS dev_schema.movie_genre
-(             
-	fk_mov_id int,
-    fk_gen_id int	
 );
