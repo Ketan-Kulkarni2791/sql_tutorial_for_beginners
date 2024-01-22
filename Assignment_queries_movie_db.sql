@@ -1,7 +1,7 @@
 SELECT * FROM dev_schema.movie;
 SELECT * FROM dev_schema.director;
 SELECT * FROM dev_schema.movie_direction;
-SELECT * FROM dev_schema.genres;
+SELECT * FROM dev_schema.genre;
 SELECT * FROM dev_schema.movie_genre;
 
 -- Write a query to find out movie names and their corresponding directors
