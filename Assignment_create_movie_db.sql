@@ -1,6 +1,15 @@
 -- You have to create a schema first. Since we don't want our tables to be created in default 'public' schema
 CREATE SCHEMA IF NOT EXISTS dev_schema;
 
+-- DROP TABLE dev_schema.movie_direction;
+-- DROP TABLE dev_schema.movie;
+-- DROP TABLE dev_schema.director;
+-- DROP TABLE dev_schema.movie_cast;
+-- DROP TABLE dev_schema.actor;
+-- DROP TABLE dev_schema.movie_genre;
+-- DROP TABLE dev_schema.genre;
+-- DROP TABLE dev_schema.reviewer;
+
 CREATE TABLE IF NOT EXISTS dev_schema.movie
 (             
 	movie_id SERIAL primary key,
@@ -62,6 +71,8 @@ OWNED BY dev_schema.actor.actor_id;
 -- use sequence for the target column
 ALTER TABLE dev_schema.actor ALTER COLUMN actor_id SET DEFAULT nextval('dev_schema.act_pk_auto_sequence');
 
+-- DROP TABLE dev_schema.movie_cast;
+
 -- Create sequence for movie_cast table
 CREATE SEQUENCE IF NOT EXISTS dev_schema.movie_cast_pk_auto_seq;
 SELECT setval('dev_schema.movie_cast_pk_auto_seq', 100);
@@ -75,7 +86,7 @@ CREATE TABLE IF NOT EXISTS dev_schema.movie_cast
 );
 
 -- ALTER TABLE dev_schema.movie_cast RENAME COLUMN fk_movie_id TO fk_mov_id; 
--- DROP TABLE dev_schema.genres;
+-- DROP TABLE dev_schema.genre;
 
 -- Create sequence for genre table
 CREATE SEQUENCE IF NOT EXISTS dev_schema.genre_pk_auto_seq;
