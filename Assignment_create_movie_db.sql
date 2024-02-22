@@ -119,10 +119,14 @@ CREATE TABLE IF NOT EXISTS dev_schema.reviewer
 	     rev_name varchar(50) NOT NULL
 );
 
+-- DROP TABLE dev_schema.rating;
+
 CREATE TABLE IF NOT EXISTS dev_schema.rating
 (             
 	fk_mov_id int,
     fk_rev_id int,
-	rev_stars int CHECK (rev_stars >=0 AND rev_stars <=5) NOT NULL,
+	rev_stars float CHECK (rev_stars >=0 AND rev_stars <=5) NOT NULL,
     num_of_rev int CHECK(num_of_rev>0) NOT NULL
 );
+
+SELECT * FROM dev_schema.rating;
