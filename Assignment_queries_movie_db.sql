@@ -170,5 +170,16 @@ dev_schema.movie AS m INNER JOIN dev_schema.rating AS r
 ON m.movie_id = r.fk_mov_id
 INNER JOIN dev_schema.reviewer AS rw
 ON rw.rev_id = r.fk_rev_id
-WHERE rw.rev_name = 'Imdb';
+WHERE rw.rev_name = 'Imdb' ORDER BY r.rev_stars ASC;
+
+-- Write a SQL query to display the average 'BookMyShow' rating for english movies.
+
+SELECT m.mov_lang, AVG(r.rev_stars)
+FROM
+dev_schema.movie AS m INNER JOIN dev_schema.rating AS r
+ON m.movie_id = r.fk_mov_id
+INNER JOIN dev_schema.reviewer AS rw
+ON rw.rev_id = r.fk_rev_id
+WHERE rw.rev_name = 'BookMyShow' GROUP BY m.mov_lang
+HAVING m.mov_lang = 'English';
 
