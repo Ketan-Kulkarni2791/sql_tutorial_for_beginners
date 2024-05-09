@@ -172,9 +172,20 @@ SELECT first_name, last_name, salary, salary*2 as appraised_salary FROM dev_sche
 SELECT first_name, last_name, salary, salary/2 as depraised_salary FROM dev_schema.employee;
 
 -- DISTINCT Clause
+SELECT salary FROM dev_schema.employee;
 SELECT DISTINCT salary FROM dev_schema.employee;
 
-SELECT DISTINCT first_name, salary FROM dev_schema.employee;
+-- SELECT DISTINCT first_name, salary FROM dev_schema.employee;
+SELECT DISTINCT salary, first_name  FROM dev_schema.employee;
+
+-- ORDER BY clause
+SELECT * FROM dev_schema.employee ORDER BY salary DESC;
+SELECT * FROM dev_schema.employee ORDER BY 4 DESC;
+
+-- LIMIT with OFFSET
+SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 5;
+SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 4 OFFSET 4;
+SELECT * FROM dev_schema.employee ORDER BY salary DESC LIMIT 4 OFFSET 10;
 
 -- ORDER BY clause
 SELECT * FROM dev_schema.employee ORDER BY salary DESC;
